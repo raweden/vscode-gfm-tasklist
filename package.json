@@ -1,0 +1,72 @@
+{
+	"name": "gfm-tasklist",
+	"displayName": "Github Flavored Markdown - Tasklist",
+	"description": "Adds support for Tasklist of Github Flavored Markdown.",
+	"version": "0.0.1",
+	"publisher": "raweden",
+	"private": true,
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/raweden/vscode-gfm-tasklist.git"
+	},
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"extensionKind": [
+		"workspace"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"markdown.markdownItPlugins": true,
+		"markdown.previewStyles": [
+			"gfm-tasklist.css"
+		],
+		"configuration": {
+			"title": "Markdown Checkboxes Options",
+			"properties": {
+				"markdown-checkboxes.enable": {
+					"type": "boolean",
+					"description": "Enable checkboxes in markdown preview.",
+					"default": true
+				},
+				"markdown-checkboxes.label": {
+					"type": "boolean",
+					"markdownDescription": "Wrap the rendered list items in a `<label>` element.",
+					"default": false
+				},
+				"markdown-checkboxes.labelAfter": {
+					"type": "boolean",
+					"markdownDescription": "Adds the label after the checkbox. Only applies when `#markdown-checkboxes.label#` is set to `true`.",
+					"default": false
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "rollup -c config.gfm-todo.mjs",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "rollup -w -c config.gfm-todo.mjs"
+	},
+	"dependencies": {
+		"@hedgedoc/markdown-it-plugins": "^2.1.4",
+		"@types/vscode-notebook-renderer": "^1.72.0",
+		"markdown-it-task-lists": "^2.1.1",
+		"rollup": "^4.17.2",
+		"vsce": "^2.15.0"
+	},
+	"devDependencies": {
+		"@types/markdown-it": "^12.0.1",
+		"@types/node": "^16.18.34",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^6.7.0",
+		"@typescript-eslint/parser": "^6.7.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.4.2"
+	}
+}
